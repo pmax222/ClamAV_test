@@ -51,5 +51,9 @@ def list_files():
     files = os.listdir(UPLOAD_FOLDER)
     return render_template('uploads.html', files=files)
 
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)
+
 if __name__ == '__main__':
     app.run(debug=True)
